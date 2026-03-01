@@ -1,0 +1,26 @@
+.custom-button {
+  width: 100%;
+  padding: 0.9rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  background: linear-gradient(
+    135deg,
+    var(--color-primary),
+    #e0b420
+  );
+  color: var(--color-black);
+  font-weight: 700;
+  font-size: 1rem;
+  transition: 0.3s;
+  box-shadow: 0 8px 20px rgba(244, 196, 48, 0.3);
+}
+
+.custom-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px rgba(244, 196, 48, 0.4);
+}
+
+.custom-button:active {
+  transform: scale(0.98);
+}

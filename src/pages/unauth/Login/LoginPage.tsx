@@ -2,10 +2,12 @@ import { useState } from "react";
 import "./LoginPage.css";
 import { Input } from "../../../components/Input/Input";
 import { Button } from "../../../components/Button/Button";
+import { useNavigate } from "react-router-dom";
 
 export function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -14,6 +16,8 @@ export function LoginPage() {
       email,
       password,
     });
+
+    navigate("/dashboard");
   }
 
   return (

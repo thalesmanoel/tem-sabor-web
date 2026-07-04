@@ -2,15 +2,18 @@ import { StatCard } from "../../../components/StatCard/StatCard";
 import { MainLayout } from "../../../layouts/MainLayout/MainLayout";
 import "./Dashboard.css";
 import { PackageCheck, ShoppingBag, TriangleAlert, Users } from "lucide-react";
+import { authStorage } from "../../../services/authStorage";
 
 export function Dashboard() {
+  const firstName = authStorage.getSession()?.user.name.split(" ")[0] ?? "usuário";
+
   return (
     <MainLayout>
       <div className="dashboard-page">
         <section className="dashboard-hero" aria-labelledby="dashboard-title">
           <div>
             <span className="dashboard-eyebrow">Resumo operacional</span>
-            <h1 id="dashboard-title">Bom dia, Thales</h1>
+            <h1 id="dashboard-title">Olá, {firstName}</h1>
             <p>Aqui está o resumo do sistema hoje.</p>
           </div>
 

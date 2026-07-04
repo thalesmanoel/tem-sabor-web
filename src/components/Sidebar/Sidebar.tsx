@@ -1,5 +1,5 @@
 import "./Sidebar.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import type { LucideIcon } from "lucide-react";
 import {
   ArrowLeftRight,
@@ -11,6 +11,7 @@ import {
   Users,
   UtensilsCrossed,
 } from "lucide-react";
+import { authStorage } from "../../services/authStorage";
 
 interface Props {
   open: boolean;
@@ -32,6 +33,13 @@ const menuItems: MenuItem[] = [
 ];
 
 export function Sidebar({ open }: Props) {
+  const navigate = useNavigate();
+
+  function handleLogout() {
+    authStorage.clearSession();
+    navigate("/login", { replace: true });
+  }
+
   return (
     <aside className={`sidebar ${open ? "open" : "closed"}`}>
       <div className="sidebar-logo">
@@ -76,12 +84,12 @@ export function Sidebar({ open }: Props) {
         })}
       </nav>
 
-      <div className="sidebar-footer">
+      <button className="sidebar-footer" type="button" onClick={handleLogout}>
         <span className="sidebar-menu-icon" aria-hidden="true">
           <LogOut size={18} strokeWidth={2.35} />
         </span>
         <span className="sidebar-menu-label">Sair</span>
-      </div>
+      </button>
     </aside>
   );
 }

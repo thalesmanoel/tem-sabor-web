@@ -1,4 +1,4 @@
-import type { InputHTMLAttributes } from "react";
+import { useId, type InputHTMLAttributes } from "react";
 import "./Input.css";
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -7,11 +7,27 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 export function Input({ label, error, ...rest }: InputProps) {
+  const generatedId = useId();
+  const inputId = rest.id ?? generatedId;
+  const errorId = `${inputId}-error`;
+
   return (
     <div className="input-container">
-      <label className="input-label">{label}</label>
-      <input className="input-field" {...rest} />
-      {error && <span className="input-error">{error}</span>}
+      <label className="input-label" htmlFor={inputId}>
+        {label}
+      </label>
+      <input
+        className="input-field"
+        {...rest}
+        id={inputId}
+        aria-invalid={Boolean(error)}
+        aria-describedby={error ? errorId : rest["aria-describedby"]}
+      />
+      {error && (
+        <span className="input-error" id={errorId}>
+          {error}
+        </span>
+      )}
     </div>
   );
 }

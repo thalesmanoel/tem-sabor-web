@@ -1,6 +1,7 @@
 import "./Header.css";
 import { Bell, Menu, UserRound } from "lucide-react";
 import { useLocation } from "react-router-dom";
+import { authStorage } from "../../services/authStorage";
 
 interface Props {
   toggleSidebar: () => void;
@@ -8,6 +9,7 @@ interface Props {
 
 export function Header({ toggleSidebar }: Props) {
   const location = useLocation();
+  const authenticatedUser = authStorage.getSession()?.user;
   const pageInfoByPath: Record<string, { kicker: string; title: string }> = {
     "/dashboard": { kicker: "Visão geral", title: "Dashboard" },
     "/pedidos": { kicker: "Operação", title: "Pedidos" },
@@ -43,8 +45,8 @@ export function Header({ toggleSidebar }: Props) {
 
         <div className="user">
           <div className="user-info">
-            <strong>Thales Carrion</strong>
-            <small>Administrador</small>
+            <strong>{authenticatedUser?.name ?? "Usuário"}</strong>
+            <small>{authenticatedUser?.email ?? "Sessão autenticada"}</small>
           </div>
 
           <div className="avatar">

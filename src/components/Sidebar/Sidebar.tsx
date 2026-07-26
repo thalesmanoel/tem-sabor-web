@@ -3,7 +3,10 @@ import { NavLink, useNavigate } from "react-router-dom";
 import type { LucideIcon } from "lucide-react";
 import {
   ArrowLeftRight,
+  BarChart3,
   ClipboardList,
+  FileUp,
+  Factory,
   LayoutDashboard,
   LogOut,
   Package,
@@ -29,6 +32,9 @@ const menuItems: MenuItem[] = [
   { label: "Clientes", icon: Users, to: "/clientes" },
   { label: "Produtos", icon: Package, to: "/produtos" },
   { label: "Movimentações", icon: ArrowLeftRight, to: "/movimentacoes" },
+  { label: "Relatórios", icon: BarChart3, to: "/relatorios" },
+  { label: "Importar NF", icon: FileUp, to: "/importar-nota" },
+  { label: "Produção", icon: Factory, to: "/operacoes" },
   { label: "Configurações", icon: Settings },
 ];
 

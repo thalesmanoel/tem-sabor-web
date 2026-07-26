@@ -16,6 +16,9 @@ export function Header({ toggleSidebar }: Props) {
     "/clientes": { kicker: "Cadastros", title: "Clientes" },
     "/produtos": { kicker: "Catálogo", title: "Produtos" },
     "/movimentacoes": { kicker: "Estoque", title: "Movimentações" },
+    "/relatorios": { kicker: "Indicadores", title: "Relatórios" },
+    "/importar-nota": { kicker: "Compras", title: "Importar Nota Fiscal" },
+    "/operacoes": { kicker: "Estoque", title: "Produção e ocorrências" },
   };
   const pageInfo = pageInfoByPath[location.pathname] ?? pageInfoByPath["/dashboard"];
 
@@ -40,7 +43,6 @@ export function Header({ toggleSidebar }: Props) {
       <div className="header-right">
         <button className="notification" type="button" aria-label="Notificações">
           <Bell size={20} strokeWidth={2.35} aria-hidden="true" />
-          <span className="badge">3</span>
         </button>
 
         <div className="user">
